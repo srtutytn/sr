@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Profile Page</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        /* Custom styles for focus, border, etc., if needed, though Tailwind covers most */
+        input:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* Blue focus ring */
+            border-color: #4299e1; /* Blue border */
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+    <div class="min-h-screen flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8">
+        <!-- Header Section -->
+        <header class="text-center mb-12 w-full max-w-4xl">
+            <h1 class="text-5xl font-extrabold text-blue-800 mb-4 tracking-tight">Our Esteemed Faculty</h1>
+            <p class="text-xl text-gray-600">Meet the dedicated team shaping the future.</p>
+        </header>
+
+        <!-- Faculty Profile Cards Section -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl mb-16">
+            <!-- Faculty Card 1 -->
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 flex flex-col items-center text-center transform hover:-translate-y-2">
+                <img src="https://placehold.co/150x150/a78bfa/ffffff?text=Prof.A" alt="Professor Alice Johnson" class="w-36 h-36 rounded-full object-cover mb-6 border-4 border-purple-300 shadow-md">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Professor Alice Johnson</h2>
+                <p class="text-lg text-purple-700 font-semibold mb-3">Department of Computer Science</p>
+                <p class="text-base text-gray-700 leading-relaxed">
+                    Professor Johnson specializes in Artificial Intelligence and Machine Learning, with a focus on natural language processing. Her research explores innovative ways to enhance human-computer interaction.
+                </p>
+            </div>
+
+            <!-- Faculty Card 2 -->
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 flex flex-col items-center text-center transform hover:-translate-y-2">
+                <img src="https://placehold.co/150x150/60a5fa/ffffff?text=Dr.B" alt="Dr. Robert Smith" class="w-36 h-36 rounded-full object-cover mb-6 border-4 border-blue-300 shadow-md">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Dr. Robert Smith</h2>
+                <p class="text-lg text-blue-700 font-semibold mb-3">Department of Physics</p>
+                <p class="text-base text-gray-700 leading-relaxed">
+                    Dr. Smith is an expert in Quantum Mechanics and Astrophysics. His groundbreaking work on black holes has been published in numerous prestigious journals.
+                </p>
+            </div>
+
+            <!-- Faculty Card 3 -->
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 flex flex-col items-center text-center transform hover:-translate-y-2">
+                <img src="https://placehold.co/150x150/34d399/ffffff?text=Dr.C" alt="Dr. Carol White" class="w-36 h-36 rounded-full object-cover mb-6 border-4 border-green-300 shadow-md">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Dr. Carol White</h2>
+                <p class="text-lg text-green-700 font-semibold mb-3">Department of Literature</p>
+                <p class="text-base text-gray-700 leading-relaxed">
+                    Dr. White's research focuses on 20th-century American literature and post-colonial studies. She is particularly interested in narrative theory and cultural identities.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section class="w-full max-w-2xl bg-white rounded-xl shadow-lg p-8 md:p-10 lg:p-12">
+            <h2 class="text-4xl font-bold text-center text-blue-800 mb-8">Contact Us</h2>
+            <form id="contactForm" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-lg font-medium text-gray-700 mb-2">Your Name</label>
+                    <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 text-lg">
+                </div>
+                <div>
+                    <label for="email" class="block text-lg font-medium text-gray-700 mb-2">Your Email</label>
+                    <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 text-lg">
+                </div>
+                <div>
+                    <label for="message" class="block text-lg font-medium text-gray-700 mb-2">Your Message</label>
+                    <textarea id="message" name="message" rows="5" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 text-lg"></textarea>
+                </div>
+                <div id="validation-message" class="text-center text-sm font-semibold mt-4">
+                    <!-- Validation messages will be displayed here -->
+                </div>
+                <div>
+                    <button type="submit" class="w-full flex justify-center py-3 px-6 border border-transparent rounded-md shadow-sm text-xl font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            const validationMessageDiv = document.getElementById('validation-message');
+
+            let isValid = true;
+            let messages = [];
+
+            // Name validation
+            if (nameInput.value.trim() === '') {
+                isValid = false;
+                messages.push('Name cannot be empty.');
+                nameInput.classList.add('border-red-500');
+            } else {
+                nameInput.classList.remove('border-red-500');
+            }
+
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailInput.value.trim() === '') {
+                isValid = false;
+                messages.push('Email cannot be empty.');
+                emailInput.classList.add('border-red-500');
+            } else if (!emailPattern.test(emailInput.value.trim())) {
+                isValid = false;
+                messages.push('Please enter a valid email address.');
+                emailInput.classList.add('border-red-500');
+            } else {
+                emailInput.classList.remove('border-red-500');
+            }
+
+            // Message validation
+            if (messageInput.value.trim() === '') {
+                isValid = false;
+                messages.push('Message cannot be empty.');
+                messageInput.classList.add('border-red-500');
+            } else {
+                messageInput.classList.remove('border-red-500');
+            }
+
+            // Display messages
+            if (!isValid) {
+                validationMessageDiv.innerHTML = `<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                                    <strong class="font-bold">Error!</strong>
+                                                    <span class="block sm:inline">${messages.join('<br>')}</span>
+                                                </div>`;
+                validationMessageDiv.classList.remove('text-green-700');
+                validationMessageDiv.classList.add('text-red-700');
+            } else {
+                validationMessageDiv.innerHTML = `<div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                                                    <strong class="font-bold">Success!</strong>
+                                                    <span class="block sm:inline">Your message has been sent (not really, this is a demo).</span>
+                                                </div>`;
+                validationMessageDiv.classList.remove('text-red-700');
+                validationMessageDiv.classList.add('text-green-700');
+                // Optionally clear the form after successful submission
+                nameInput.value = '';
+                emailInput.value = '';
+                messageInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
